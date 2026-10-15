@@ -1,3 +1,8 @@
+# Join the roleplay server!
+
+https://join-gsrp.com
+
+
 ## Map Controls
 
 | Input | Action |
