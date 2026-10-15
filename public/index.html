@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#14201f">
+  <title>County Flight</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./branding.css">
+  <link rel="stylesheet" href="./settings.css">
+</head>
+<body>
+  <main id="map"></main>
+  <a class="community" href="https://join-gsrp.com" target="_blank" rel="noopener noreferrer"><img src="./branding/discord.png" width="24" height="24" alt="">Join our roleplay server</a>
+  <details id="settings"><summary>Settings</summary><div class="settings-body">
+    <label class="setting-toggle" for="sound-enabled">Sound<input id="sound-enabled" type="checkbox"></label>
+    <label class="setting-range" for="volume">Volume<output id="volume-value">40%</output><input id="volume" type="range" min="0" max="100" value="40"></label>
+    <hr>
+    <label class="setting-toggle" for="shaders-enabled">Enhanced shaders<input id="shaders-enabled" type="checkbox" disabled></label>
+    <label class="setting-range" for="sun-time">Time of day<output id="sun-time-value">18:48</output><input id="sun-time" type="range" min="7" max="19.5" step="0.05" value="18.8" disabled></label>
+    <label class="setting-range" for="shader-strength">Effect strength<output id="strength-value">80%</output><input id="shader-strength" type="range" min="0" max="100" value="80" disabled></label>
+    <label class="setting-range" for="exposure">Exposure<output id="exposure-value">1.05</output><input id="exposure" type="range" min="80" max="130" value="105" disabled></label>
+    <p id="settings-status" role="status" aria-live="polite" hidden></p>
+  </div></details>
+  <header><strong>County Flight</strong><span class="divider"></span><button id="overview" title="Return to map overview">Overview</button><button id="fly" disabled>Fly</button><button id="exit" hidden>Return to map</button></header>
+  <div id="loading" role="status" aria-live="polite"><span class="spinner"></span><p id="status">Loading map</p><progress id="progress"></progress><button id="retry" hidden>Retry</button></div>
+  <section id="flight-ui" aria-label="Flight controls" hidden>
+    <nav aria-label="Aircraft"><button id="view">Exterior</button><button id="pause">Pause</button><button id="restart">Restart</button><button id="approach">Final approach</button><button id="centre">Centre camera</button><button id="flaps" aria-pressed="false">Flaps</button><button id="parking" aria-pressed="false">Parking brake</button></nav>
+    <div class="left-gauges"><div><small>AIRSPEED</small><output id="speed">0</output><span>kt</span></div><div><small>HEADING</small><output id="heading">000</output><span>deg</span></div><label for="throttle">THROTTLE <output id="power">0%</output></label><input id="throttle" type="range" min="0" max="100" value="0" aria-label="Throttle"></div>
+    <div class="right-gauges"><div><small>ALTITUDE</small><output id="altitude">0</output><span>ft</span></div><div><small>VERTICAL SPEED</small><output id="vertical">0</output><span>ft/min</span></div></div>
+  </section>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

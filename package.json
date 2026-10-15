@@ -1,0 +1,9 @@
+{
+  "name": "county-flight",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Standalone 3D county map and first-person flight simulator",
+  "scripts": {"start": "node server.mjs", "test": "node --test test/*.test.mjs", "prepare:runtime": "node scripts/prepare-runtime.mjs"},
+  "engines": {"node": ">=20"}
+}

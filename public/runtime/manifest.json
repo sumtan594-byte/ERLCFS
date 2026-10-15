@@ -1,0 +1,52 @@
+{
+  "sdk.js": {
+    "url": "https://cdn.jsdelivr.net/npm/@0x62/jsbsim-wasm@1.2.4-beta.4/dist/index.js",
+    "bytes": 27044,
+    "sha256": "d54a8be7dcdaec9f4f70aed2580797d67e6e18aff60b1bf5bbfd2df915ac5bc7"
+  },
+  "engine.mjs": {
+    "url": "https://cdn.jsdelivr.net/npm/@0x62/jsbsim-wasm@1.2.4-beta.4/dist/wasm/jsbsim_wasm.mjs",
+    "bytes": 122181,
+    "sha256": "3eacce7d6ace557e430e0e466a65672f086b6b427e0bf6d1b1510fe2dba61a16"
+  },
+  "engine.wasm": {
+    "url": "https://cdn.jsdelivr.net/npm/@0x62/jsbsim-wasm@1.2.4-beta.4/dist/wasm/jsbsim_wasm.wasm",
+    "bytes": 1588236,
+    "sha256": "2c79b90ff12c7cd94b36a9af8db07e0bde19ffe4e2716816dc6cea8ad4f8de92"
+  },
+  "c172p.xml": {
+    "url": "https://raw.githubusercontent.com/JSBSim-Team/jsbsim/v1.2.4/aircraft/c172p/c172p.xml",
+    "bytes": 39034,
+    "sha256": "0af58c613f7bca7e1d85f4b2e178a4d7b0b14dda6d5f79b38c571d9911187aa4"
+  },
+  "eng_io320.xml": {
+    "url": "https://raw.githubusercontent.com/JSBSim-Team/jsbsim/v1.2.4/engine/eng_io320.xml",
+    "bytes": 778,
+    "sha256": "0cedc1e356a7a572a175f351a4abb952ba91081219a37dc7192bce3a2181d8c6"
+  },
+  "prop_75in2f.xml": {
+    "url": "https://raw.githubusercontent.com/JSBSim-Team/jsbsim/v1.2.4/engine/prop_75in2f.xml",
+    "bytes": 2842,
+    "sha256": "6481edf1da940fdea5358913d226c3e25d3e6b8209b4805370258a9a65ca7403"
+  },
+  "GLTFLoader.js": {
+    "url": "https://cdn.jsdelivr.net/npm/three@0.182.0/examples/jsm/loaders/GLTFLoader.js",
+    "bytes": 114905,
+    "sha256": "b1e4e7a7a247fd1529697a07b7065fe75e2746db83889e61b7711d470eaa8efe"
+  },
+  "BufferGeometryUtils.js": {
+    "url": "https://cdn.jsdelivr.net/npm/three@0.182.0/examples/jsm/utils/BufferGeometryUtils.js",
+    "bytes": 35568,
+    "sha256": "0a9d9502526d22e9181f3eb8a757c7e6bc4a30dbea8dfd9aac36cff9132be8ce"
+  },
+  "SDK-LICENSE": {
+    "url": "https://cdn.jsdelivr.net/npm/@0x62/jsbsim-wasm@1.2.4-beta.4/LICENSE",
+    "bytes": 1071,
+    "sha256": "15e2d343fc930439fb82351d7c30f3d151b4c42ca3132c13ff1a60da527a1259"
+  },
+  "JSBSIM-COPYING": {
+    "url": "https://raw.githubusercontent.com/JSBSim-Team/jsbsim/v1.2.4/COPYING",
+    "bytes": 27032,
+    "sha256": "1e7e6bae5a5bde32f1ae5a7c37a082d1ab03cf89354f7f936ac40be9e39a6531"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "architectureParts": 15929,
+  "architectureMeshes": 1521,
+  "buildingTriangles": 629991,
+  "roadTriangles": 87416,
+  "treeInstances": 10439,
+  "treeDrawCalls": 22,
+  "treeTriangles": 3761120
+}
