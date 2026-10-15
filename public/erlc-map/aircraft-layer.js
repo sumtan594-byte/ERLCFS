@@ -3,15 +3,17 @@ import {flightAsset, METERS_PER_STUD} from './flight-model.js';
 import {splitGeometry} from './aircraft-geometry.js';
 import {FlightInstruments} from './flight-instruments.js';
 import {addAircraftBranding} from './aircraft-branding.js';
+import {PilotRig} from './pilot-rig.js';
 
 export class AircraftLayer {
   static async create(status=()=>{}) {
     status('Loading Cessna exterior and cockpit');
     const {GLTFLoader}=await import(flightAsset('GLTFLoader.js'));
-    const gltf=await new GLTFLoader().loadAsync(new URL('./aircraft/cessna172.glb',import.meta.url).href);
-    return new AircraftLayer(gltf.scene);
+    const loader=new GLTFLoader();
+    const [gltf,pilot]=await Promise.all(['cessna172.glb','pilot.glb'].map(file=>loader.loadAsync(new URL('./aircraft/'+file,import.meta.url).href)));
+    return new AircraftLayer(gltf.scene,pilot.scene);
   }
-  constructor(source) {
+  constructor(source,pilot) {
     source.updateMatrixWorld(true);
     const box=new Box3().setFromObject(source),scale=10.912/(box.max.x-box.min.x);
     
@@ -54,15 +56,17 @@ export class AircraftLayer {
       const material=new MeshBasicMaterial({color:0x9ea9ae,transparent:true,opacity:.07,depthWrite:false,side:DoubleSide});
       this.propBlur=new Mesh(new CircleGeometry(.87,48),material);this.propBlur.position.copy(this.propeller.position);this.root.add(this.propBlur);this.materials.add(material);
     }
-    this.eye=new Vector3(-.22,.40,.12);this.light=new PointLight(0xfff4df,.8,3,2);this.light.position.copy(this.eye);this.root.add(this.light);
+    this.eye=new Vector3(-.22,.38,-.12);this.light=new PointLight(0xfff4df,.8,3,2);this.light.position.copy(this.eye);this.root.add(this.light);
     this.instruments=new FlightInstruments(this.root,this.materials,this.textures);
     addAircraftBranding(this);
+    this.pilot=new PilotRig(pilot,this);
   }
   hinge(mesh,pivot){const group=new Group();group.name=mesh.name+' hinge';group.position.copy(pivot);mesh.position.sub(pivot);group.add(mesh);this.root.add(group);return group;}
   update(state,model,dt) {
     this.root.position.copy(state.position);this.root.quaternion.copy(state.quaternion);
     for(const surface of this.surfaces)surface.group.quaternion.setFromAxisAngle(surface.axis,model.surfaces[surface.key]*surface.sign);
     for(const yoke of this.yokes){yoke.rotation.z=-model.surfaces.leftAileron/.26*.65;yoke.position.z=yoke.userData.home.z-model.surfaces.elevator/.49*.085;}
+    this.pilot.update(model,dt);
     for(const control of this.controls){const key=control.userData.flightControl;control.position.copy(control.userData.home);
       if(key==='throttle'||key==='mixture')control.position.z+=(1-model[key])*.05;
       if(key==='parkingBrake')control.position.z+=model.parkingBrake?.018:0;
@@ -73,5 +77,5 @@ export class AircraftLayer {
     if(this.propeller){this.propeller.rotation.z=(this.propeller.rotation.z+model.rpm*Math.PI/30*dt)%(Math.PI*2);this.propeller.visible=model.rpm<600;this.propBlur.visible=model.rpm>=600;this.propBlur.rotation.z=this.propeller.rotation.z;this.propBlur.material.opacity=Math.min(.15,.025+model.rpm/30000);}
     this.instruments.update(model,dt);
   }
-  dispose() {this.root.removeFromParent();this.root.traverse(n=>n.geometry?.dispose());for(const m of this.materials)m.dispose();for(const t of this.textures)t.dispose();}
+  dispose() {this.pilot.dispose();this.root.removeFromParent();this.root.traverse(n=>n.geometry?.dispose());for(const m of this.materials)m.dispose();for(const t of this.textures)t.dispose();}
 }

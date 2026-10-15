@@ -6,7 +6,7 @@ import {fileURLToPath} from 'node:url';
 const root=fileURLToPath(new URL('./public/',import.meta.url));
 const base='/'+(process.env.BASE_PATH||'').split('/').filter(Boolean).join('/');
 const prefix=base==='/'?'':base;
-const types={'.html':'text/html','.css':'text/css','.js':'text/javascript','.mjs':'text/javascript','.wasm':'application/wasm','.xml':'application/xml','.json':'application/json','.webp':'image/webp','.png':'image/png','.glb':'model/gltf-binary','.gz':'application/octet-stream','.wav':'audio/wav','.mp3':'audio/mpeg'};
+const types={'.html':'text/html','.css':'text/css','.js':'text/javascript','.mjs':'text/javascript','.wasm':'application/wasm','.xml':'application/xml','.json':'application/json','.webp':'image/webp','.png':'image/png','.svg':'image/svg+xml','.glb':'model/gltf-binary','.gz':'application/octet-stream','.wav':'audio/wav','.mp3':'audio/mpeg'};
 const server=http.createServer(async(req,res)=>{
   res.setHeader('X-Content-Type-Options','nosniff');
   res.setHeader('Referrer-Policy','no-referrer');

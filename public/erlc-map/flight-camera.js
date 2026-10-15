@@ -1,7 +1,7 @@
 import {Vector3,Quaternion,Euler} from './vendor/three.module.js';
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 export class FlightCamera {
-  constructor(){this.views={cockpit:{yaw:0,pitch:0,pan:new Vector3(),zoom:76},exterior:{yaw:0,pitch:Math.atan2(12,55),pan:new Vector3(),zoom:Math.hypot(12,55)}};}
+  constructor(){this.views={cockpit:{yaw:0,pitch:-.12,pan:new Vector3(),zoom:76},exterior:{yaw:0,pitch:Math.atan2(12,55),pan:new Vector3(),zoom:Math.hypot(12,55)}};}
   reset(view){const fresh=new FlightCamera();this.views[view]=fresh.views[view];}
   drag(view,mode,dx,dy){
     const s=this.views[view];

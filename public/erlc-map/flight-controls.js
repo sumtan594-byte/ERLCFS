@@ -61,7 +61,7 @@ export class FlightControls {
   update(dt) {
     const k=this.keys,axis=(p,n)=>Number(k.has(p))-Number(k.has(n));
     try {this.model.update(dt,{pitch:axis('ArrowUp','ArrowDown')||this.mouse.pitch,bank:axis('ArrowRight','ArrowLeft')||this.mouse.bank,
-      rudder:axis('KeyE','KeyQ'),throttle:axis('KeyW','KeyS'),trim:axis('BracketRight','BracketLeft'),brake:k.has('Space')});}
+      rudder:axis('KeyE','KeyQ'),throttle:axis('KeyW','KeyS'),trim:axis('BracketRight','BracketLeft'),brake:k.has('Space')||this.hudBrake});}
     catch(e){this.model.paused=true;console.error(e);}
     this.apply(dt);
   }
